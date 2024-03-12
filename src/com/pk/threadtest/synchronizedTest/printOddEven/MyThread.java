@@ -3,7 +3,6 @@ package com.pk.threadtest.synchronizedTest.printOddEven;
 public class MyThread extends Thread{
 	
 	PrintOddEvenTest prnEvenTest;
-	boolean isEvenOdd;
 	
 	public MyThread(PrintOddEvenTest prnEvenTest) {
 		super();

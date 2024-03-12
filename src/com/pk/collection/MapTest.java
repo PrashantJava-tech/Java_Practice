@@ -1,4 +1,4 @@
-package com.pk.threadtest.java8;
+package com.pk.collection;
 
 import java.util.ArrayList;
 import java.util.List;
