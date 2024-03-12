@@ -6,10 +6,10 @@ public class SynchronizeResource {
 
 	
 	public synchronized void displayResource(String name) {
-		for (int i = 0; i < 10; i ++) {
+		for (int i = 0; i < 5; i ++) {
 			System.out.println("Hello world ");
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

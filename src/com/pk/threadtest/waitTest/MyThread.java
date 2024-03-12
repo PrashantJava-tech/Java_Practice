@@ -14,7 +14,7 @@ public class MyThread extends Thread{
 			}
 			System.out.println("total="+total);
 			System.out.println("child thread calculation completed.");
-			this.notify();
+			//this.notify();
 		}
 	}
 }
