@@ -3,7 +3,7 @@ package com.pk.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifiableMapTest {
+public class MapTest {
 
 	public static void main(String[] args) {
 		
@@ -12,7 +12,6 @@ public class ModifiableMapTest {
 		names.add("kadam");
 		
 		doNotChange(names); // modifiable list, in other method we can modify it
-		// we can use here unmodifiableMap()
 		
 		System.out.println(names);
 	}

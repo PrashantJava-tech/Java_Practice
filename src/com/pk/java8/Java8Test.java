@@ -1,4 +1,4 @@
-package com.pk.threadtest.java8;
+package com.pk.java8;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,36 +42,45 @@ public class Java8Test {
 		Map<Object, Long> word1 = Arrays.stream(nameString1.split(" "))
 				.collect(Collectors.groupingBy(Function.identity() , Collectors.counting()));
 		word1.forEach((s, v) -> System.out.println("k="+s +", v="+v));
-
-	System.out.println("=================================================");
-		System.out.println("***2. grouping count persons on basis of city");
-		List<Person> personList = List.of(new Person( 15, "prashant" , "pune", 10000L), new Person( 20, "vishal" , "pune", 20000L),
-										new Person( 10, "priyom" , "USA", 30000L), new Person( 25, "Monika" , "UK", 40000L));
-		Map<String, Long> personDetails = personList.stream()
-			.collect(Collectors.groupingBy(Person::getCity, Collectors.counting()));
-		personDetails.forEach((k,v) -> System.out.println("k="+k+", v="+v));
-		/** k=USA, v=1
-		k=UK, v=1
-		k=pune, v=2*/		
+		
 	System.out.println("=================================================");
 		
 		System.out.println("***2. grouping person on basis of city");
+		List<Person> personList = List.of(new Person( 15, "prashant" , "pune", 10000L), new Person( 20, "vishal" , "pune", 20000L),
+				new Person( 10, "priyom" , "USA", 30000L), new Person( 25, "Monika" , "UK", 40000L));
+
 		Map<String, List<Person>> personDetails0 = personList.stream()
 			.collect(Collectors.groupingBy(Person::getCity));
+
 		personDetails0.forEach((k,v) -> System.out.println("k="+k+", v="+v));
 		/** k=USA, v=[Person [age=10, name=priyom, city=USA, salary=30000]]
 			k=UK, v=[Person [age=25, name=Monika, city=UK, salary=40000]]
 			k=pune, v=[Person [age=15, name=prashant, city=pune, salary=10000], Person [age=20, name=vishal, city=pune, salary=20000]]
 		 */
 
-		long sal = 1000;
 	System.out.println("=================================================");
+		System.out.println("***2. grouping count persons on basis of city");
+		Map<String, Long> personDetails = personList.stream()
+			.collect(Collectors.groupingBy(
+									Person::getCity, 
+									Collectors.counting())
+					);
+		personDetails.forEach((k,v) -> System.out.println("k="+k+", v="+v));
+		/** k=USA, v=1
+		k=UK, v=1
+		k=pune, v=2*/		
+		
+		System.out.println("=================================================");
+
+		long sal = 1000;
 		System.out.println("***3. finding person names only,  from list of persons on basis of city");
 		List<Person> personList1 = List.of(new Person( 15, "prashant" , "pune", 10000L), new Person( 15, "Jon" , "pune", 10000L), new Person( 20, "vishal" , "pune", 20000L),
 										new Person( 10, "priyom" , "USA", 30000L), new Person( 25, "Monika" , "UK", 40000L));
 		Map<String, List<String>> personDetails1 = personList1.stream()
-			.collect(Collectors.groupingBy(Person::getCity, 
-					  	Collectors.mapping(Person::getName, Collectors.toList())) // --- to map/convert object into getName  
+			.collect(Collectors.groupingBy(
+									Person::getCity, 
+								  	Collectors.mapping(Person::getName, Collectors.toList())) 
+									// --- to map/convert object into getName  
 					);
 		personDetails1.forEach((k,v) -> System.out.println("k="+k+", v="+v));
 		/** k=USA, v=[priyom]
@@ -81,16 +90,20 @@ public class Java8Test {
 	System.out.println("=================================================");
 		System.out.println("***Sorted person on basis of age");
 		personList1.stream()
-					.sorted(Comparator.comparingInt(Person::getAge))
+					.sorted(
+								Comparator.comparingInt(Person::getAge)
+							)
 					.forEach(person -> System.out.println("person ="+person));
 				
 	System.out.println("=================================================");
 		System.out.println("***Sorted person on basis of  name ");
 		personList1.stream()
-		.sorted((o1, o2) -> {
-                				return o1.getName().compareTo(o2.getName());
-        					}
-				).forEach(person -> System.out.println("person ="+person));
+		.sorted(
+					(o1, o2) -> {
+                					return o1.getName().compareTo(o2.getName());
+        						}
+				)
+		.forEach(person -> System.out.println("person ="+person));
 
 	System.out.println("=================================================");
 		System.out.println("***Sorted person on basis of age and then on basis of name incase of same age");
@@ -257,4 +270,91 @@ public class Java8Test {
 	
 	
 	
+}
+
+class Person {
+	
+	int age;
+	String name;
+	String city;
+	Long salary;
+	
+	public Person(int age, String name, String city, Long salary) {
+		super();
+		this.age = age;
+		this.name = name;
+		this.city = city;
+		this.salary = salary;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public Long getSalary() {
+		return salary;
+	}
+	public void setSalary(Long salary) {
+		this.salary = salary;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (age != other.age)
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (salary == null) {
+			if (other.salary != null)
+				return false;
+		} else if (!salary.equals(other.salary))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Person [age=" + age + ", name=" + name + ", city=" + city + ", salary=" + salary + "]";
+	}
+	
+	
+
 }

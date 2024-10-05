@@ -28,6 +28,11 @@ public class ZonedDateTimeTest {
         System.out.println(zone.getZone());
         System.out.println(zone.getOffset());
         System.out.println(zone.toOffsetDateTime());
+        
+        
+        ZonedDateTime zone1 = ZonedDateTime.parse("2024-09-23T19:39:12.677Z");
+        System.out.println(zone1.toInstant());
+
 
         final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
         System.out.println(zone.format(DATETIME_FORMATTER));
@@ -56,6 +61,16 @@ public class ZonedDateTimeTest {
         ZonedDateTime zonedatetime
             = ZonedDateTime.of(date, time, zoneId);
         System.out.println(zonedatetime);
+        
+        
+        String stringDate = "2013-03-05T18:05:05.000Z";
+        //String defaultTimezone = TimeZone.getDefault().getID();
+        //Date date = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")).parse(string.replaceAll("Z$", "+0000"));
+
+        ZonedDateTime zoneDate = ZonedDateTime.parse(stringDate);
+        System.out.println("zoneDate="+zoneDate);
+
+
 
     }
 

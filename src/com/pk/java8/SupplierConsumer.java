@@ -1,4 +1,4 @@
-package com.pk.threadtest.java8;
+package com.pk.java8;
 
 import java.time.LocalDate;
 import java.util.Arrays;

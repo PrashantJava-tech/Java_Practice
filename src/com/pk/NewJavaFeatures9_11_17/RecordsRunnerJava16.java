@@ -17,8 +17,8 @@ public class RecordsRunnerJava16 {
 			System.out.println("Inside static intilizers..");
 		}
 		
-		//not allowed
-		// int number;
+		//non static fields are not allowed
+		//int number1;
 		
 		static int number = 10;
 		
