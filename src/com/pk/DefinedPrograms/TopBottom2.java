@@ -15,9 +15,9 @@ class Top {
 	}
 }
  
-public class Bottom2 extends Top {
+public class TopBottom2 extends Top {
 
-	public Bottom2(String s) 
+	public TopBottom2(String s) 
 	{ 
 		super(s);    //<--- Solution 2
 		System.out.print("D");
@@ -33,7 +33,7 @@ public class Bottom2 extends Top {
 			E. Compilation fails  <---- THis is answer
 			F. run time error
 		 */
-		new Bottom2("C");
+		new TopBottom2("C");
 		System.out.println(" ");
 	}
  

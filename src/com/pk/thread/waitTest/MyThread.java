@@ -1,4 +1,4 @@
-package com.pk.threadtest.waitTest;
+package com.pk.thread.waitTest;
 
 public class MyThread extends Thread{
 

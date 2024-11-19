@@ -19,8 +19,12 @@ import java.util.stream.IntStream;
 public class Java8Test {
 
 	public static void main(String[] args) {
-		
-	System.out.println("***1. finding out each charcater and its count from name");
+
+		String nameStringCountWords = "prashant has good son has good daughter";
+		long count = Arrays.stream(nameStringCountWords.split(" ")).count();
+		System.out.println("word counts ="+count);
+
+		System.out.println("***1. finding out each charcater and its count from name");
 		String name = "prashantp";
 		Map<Object, Long> countWithDetails = Arrays.stream(name.split(""))
 				.collect(Collectors.groupingBy(c-> c, Collectors.counting()));
@@ -245,6 +249,8 @@ public class Java8Test {
 		
         // Printing the Result
         System.out.println("====================== Method Overloading");
+ 
+        ListToMapCOnvert();
 
 	}
 
@@ -266,6 +272,22 @@ public class Java8Test {
 	}
 	public void method1(int x, int y) throws IOException {
         System.out.println("====================== Method Overloading");
+	}
+	
+	public static void ListToMapCOnvert() {
+		
+		List<Person> personList = new ArrayList<Person>();
+		personList.add(new Person(10, "Prashant", "Pune", 4000000l));
+		personList.add(new Person(15, "Priyom", "Mumbai", 6000000l));
+		personList.add(new Person(20, "Prisha", "USA", 7000000l));
+		personList.add(new Person(25, "Monika", "Pune", 5000000l));
+		
+		Map<String, Long> personMap = personList.stream()
+					.sorted(Comparator.comparingLong(Person::getSalary).reversed())
+					.collect(Collectors.toMap(Person::getName, Person::getSalary));
+		
+		System.out.println(personMap);
+		
 	}
 	
 	

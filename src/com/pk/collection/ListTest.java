@@ -11,8 +11,7 @@ public class ListTest {
 		data.add("pqr");
 		
 		System.out.println("pritinging list obje directly="+data);
-		
-
+	
 	}
 
 }

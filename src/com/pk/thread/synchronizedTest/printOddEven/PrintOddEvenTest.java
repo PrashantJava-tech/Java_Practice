@@ -1,4 +1,4 @@
-package com.pk.threadtest.synchronizedTest.printOddEven;
+package com.pk.thread.synchronizedTest.printOddEven;
 
 public class PrintOddEvenTest {
 

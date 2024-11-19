@@ -4,22 +4,7 @@ import java.util.Optional;
 
 public class OptionalHandling {
 	
-	class Student{
-		String name;
-		String age;
-		
-		public Student(String name, String age) {
-			this.name = name;
-			this.age = age;
-		}
-		public String getAge() {
-			return age;
-		}
-		public String getName() {
-			return name;
-		}
-		
-	}
+	
 	
 	public static void main(String[] args) {
 		String ss ="";
@@ -61,7 +46,7 @@ public class OptionalHandling {
 		
 		//=================
 		 // create a Optional 
-        Optional<Integer> op  = Optional.empty(); 
+        Optional<Integer> op  = Optional.empty();//Optional.of(new Integer(10));
   
         // print value 
         System.out.println("Optional: "+ op); 
@@ -74,6 +59,23 @@ public class OptionalHandling {
         catch (Exception e) { 
             System.out.println(e); 
         } 
+	}
+	
+	class Student{
+		String name;
+		String age;
+		
+		public Student(String name, String age) {
+			this.name = name;
+			this.age = age;
+		}
+		public String getAge() {
+			return age;
+		}
+		public String getName() {
+			return name;
+		}
+		
 	}
 
 }

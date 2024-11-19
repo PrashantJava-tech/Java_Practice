@@ -1,4 +1,4 @@
-package com.pk.DefinedPrograms;
+package com.pk.DefinedPrograms.Array;
 
 import java.util.Arrays;
 import java.util.function.Function;
@@ -8,11 +8,13 @@ public class IntegerArrayTests {
 	
 	static void print(int a[]){
 	      System.out.print("Array after segregation is: ");
+	      
 	      for (int i = 0; i < a.length; ++i) {
 	         System.out.print(a[i] + " ");
 	      }
 	      System.out.println();
 	   }
+	
 	   public static void main(String[] args){
 		 //Way 1 - holding left index and swapping using temp varibale,
 	      int a[] = { 1, 1, 0, 0, 0, 0, 1, 1 };
