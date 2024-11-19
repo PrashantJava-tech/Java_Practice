@@ -1,4 +1,4 @@
-package com.pk.threadtest.synchronizedTest;
+package com.pk.thread.synchronizedTest;
 
 public class MyThread extends Thread{
 

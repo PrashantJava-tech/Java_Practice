@@ -1,4 +1,4 @@
-package com.pk.threadtest.synchronizedTest;
+package com.pk.thread.synchronizedTest;
 
 import java.util.Iterator;
 
